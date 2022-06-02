@@ -43,6 +43,170 @@ if($funcion == "consultarProductos")
     }
 }
 
+if($funcion == "consultarProductosDescontinuados")
+{
+    $objDB = new conexionMySQL("192.168.64.3", "db_velasVelasquez", "userVelasVelasquez", "Velas123*");
+    $estado = $objDB->conectarDB();
+    
+    if($estado)
+    {
+        echo true;
+        $plantas = $objDB->consultarProductosDescontinuados();
+        //echo "PLANTA: ".$plantas;
+        
+        if($plantas)
+        {
+            echo $plantas;
+        }
+        else
+        {
+            echo false;
+        }
+    }
+    else
+    {
+        echo false;
+    }
+}
+
+if($funcion == "consultarProductosNuevos")
+{
+    $objDB = new conexionMySQL("192.168.64.3", "db_velasVelasquez", "userVelasVelasquez", "Velas123*");
+    $estado = $objDB->conectarDB();
+    
+    if($estado)
+    {
+        echo true;
+        $plantas = $objDB->consultarProductosNuevos();
+        //echo "PLANTA: ".$plantas;
+        
+        if($plantas)
+        {
+            echo $plantas;
+        }
+        else
+        {
+            echo false;
+        }
+    }
+    else
+    {
+        echo false;
+    }
+}
+
+if($funcion == "consultarProductosActivos")
+{
+    $objDB = new conexionMySQL("192.168.64.3", "db_velasVelasquez", "userVelasVelasquez", "Velas123*");
+    $estado = $objDB->conectarDB();
+    
+    if($estado)
+    {
+        echo true;
+        $plantas = $objDB->consultarProductosActivos();
+        //echo "PLANTA: ".$plantas;
+        
+        if($plantas)
+        {
+            echo $plantas;
+        }
+        else
+        {
+            echo false;
+        }
+    }
+    else
+    {
+        echo false;
+    }
+}
+
+if($funcion == "consultarProductos2")
+{
+    $objDB = new conexionMySQL("192.168.64.3", "db_velasVelasquez", "userVelasVelasquez", "Velas123*");
+    $estado = $objDB->conectarDB();
+    
+    if($estado)
+    {
+        echo true;
+        $plantas = $objDB->consultarProductos2();
+        //echo "PLANTA: ".$plantas;
+        
+        if($plantas)
+        {
+            echo $plantas;
+        }
+        else
+        {
+            echo false;
+        }
+    }
+    else
+    {
+        echo false;
+    }
+}
+
+if($funcion == "desactivarProducto")
+{
+    $IDProducto = $_GET["IDProducto"];
+
+    $objDB = new conexionMySQL("192.168.64.3", "db_velasVelasquez", "userVelasVelasquez", "Velas123*");
+    $estado = $objDB->conectarDB();
+    
+    if($estado)
+    {
+        echo true;
+        $plantas = $objDB->desactivarProducto($IDProducto);
+        //echo "PLANTA: ".$plantas;
+        
+        if($plantas)
+        {
+            echo $plantas;
+        }
+        else
+        {
+            echo false;
+        }
+    }
+    else
+    {
+        echo false;
+    }
+}
+
+if($funcion == "editarProducto")
+{
+    $IDProducto = $_GET["IDProducto"];
+    $tituloProducto = $_GET["tituloProducto"];
+    $descripcionProducto = $_GET["descripcionProducto"];
+    $precioProducto = $_GET["precioProducto"];
+    $imagenProducto = $_GET["imagenProducto"];
+
+    $objDB = new conexionMySQL("192.168.64.3", "db_velasVelasquez", "userVelasVelasquez", "Velas123*");
+    $estado = $objDB->conectarDB();
+    
+    if($estado)
+    {
+        //echo true;
+        $plantas = $objDB->editarProducto($IDProducto, $tituloProducto, $descripcionProducto, $precioProducto);
+        //echo "PLANTA: ".$plantas;
+        
+        if($plantas)
+        {
+            echo $plantas;
+        }
+        else
+        {
+            echo false;
+        }
+    }
+    else
+    {
+        echo false;
+    }
+}
+
 class conexionMySQL
 {
     var $host;
@@ -99,7 +263,396 @@ class conexionMySQL
         //echo $mysqli->host_info . "\n";
         return $this->estadoConexion;
     }
+   
+    function editarProducto($ID, $titulo, $descripcion, $precio)
+    {
+        $sql = "UPDATE `tb_producto` SET `titulo_producto` = '".$titulo."', `descripcion_producto` = '".$descripcion."', `precio_producto` = '".$precio."' WHERE `tb_producto`.`id_producto` = ".$ID.";";
+        //echo "SQL: ".$sql;
+        $result = $this->mysqlConexion->query($sql);
+        //echo "<br><br>".$result;
+        return $result;
+    }
+
+    function desactivarProducto($ID)
+    {
+        $sql = "UPDATE `tb_producto` SET `estado_producto` = '0' WHERE `tb_producto`.`id_producto` = ".$ID.";";
+        //echo "SQL: ".$sql;
+        $result = $this->mysqlConexion->query($sql);
+        //echo "<br><br>".$result;
+        return $result;
+    }
     
+    function consultarProductos2()
+    {
+        $sql = "select *, TIMESTAMPDIFF(DAY, fecha_creacion, now()) AS dias_transcurridos from tb_producto 
+        inner join tb_existencias on tb_producto.id_producto = tb_existencias.id_producto_existencias
+        order by dias_transcurridos, estado_producto DESC;";
+        
+        $result = $this->mysqlConexion->query($sql);
+        $divHTML = "<div class='row'>";
+
+        if ($result->num_rows > 0) 
+        {
+            // output data of each row
+            while($row = $result->fetch_assoc()) 
+            {
+                $diasTranscurridos = $row["dias_transcurridos"];
+                $estado = $row["estado_producto"];
+                $titulo = "";
+                $label = "";
+                //echo "FECHA diasTranscurridos: ".$diasTranscurridos."<br>";
+
+                if($diasTranscurridos < 30)
+                {
+                    $titulo = "Nuevo";
+                    $label = "new-label";
+                }
+                else
+                {
+                    if($estado == 1)
+                    {
+                        $titulo = "Activo";
+                        $label = "active-label";
+                    }
+                    else
+                    {
+                        $titulo = "Inactivo";
+                        $label = "sale-label";
+                    }
+                }
+
+                $divHTML = $divHTML."<div class='col-xl-3 col-lg-4 col-md-6'>
+                <div class='single-product'>
+                    <div class='product-img'>
+                        <span class='pro-label ".$label."'>".$titulo."</span>
+                        <span class='pro-price-2'>$ ".$row["precio_producto"]."</span>
+                        <a  data-bs-toggle='modal'  data-bs-target='#productModal' href='#productModal'><br><br><img src='".$row["imagen"]."' alt='' /></a>
+                    </div>
+                    <div class='product-info clearfix text-center'>
+                        <div class='fix'>
+                            <h4 class='post-title'><a href='#'>".$row["titulo_producto"]." ".$row["id_producto"]."</a></h4>
+                        </div>
+                        <div class='fix'>
+                            <span class='pro-rating'>
+                                <a href='#'><i class='zmdi zmdi-star'></i></a>
+                                <a href='#'><i class='zmdi zmdi-star'></i></a>
+                                <a href='#'><i class='zmdi zmdi-star'></i></a>
+                                <a href='#'><i class='zmdi zmdi-star-half'></i></a>
+                                <a href='#'><i class='zmdi zmdi-star-half'></i></a>
+                            </span>
+                        </div>
+                        
+                        <div class='product-action clearfix'>
+                            <button id='btnEditarProducto".$row["id_producto"]."' type='button' class='btn btn-primary' btnProductoIDEditar='".$row["id_producto"]."' btnProductoTituloEditar='".$row["titulo_producto"]."' btnProductoDescripcionEditar='".$row["descripcion_producto"]."' btnProductoPrecio='".$row["precio_producto"]."' btnProductoImagen='".$row["imagen"]."'>
+                                <ion-icon name='build' onclick='mostrarModalModificar(".$row["id_producto"].")'></ion-icon>
+                            </button>
+                            <button id='btnEliminarProducto".$row["id_producto"]."' type='button' class='btn btn-danger' btnProductoID='".$row["id_producto"]."' btnProductoTitulo='".$row["titulo_producto"]."' btnProductoDescripcion='".$row["descripcion_producto"]."'>
+                                <ion-icon name='trash' onclick='mostrarModalEliminar(".$row["id_producto"].")'></ion-icon>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>";
+            }
+            
+            $divHTML = $divHTML."</div>";
+            
+            //echo $tablaHTML;
+            //return $tablaHTML;
+        }
+        else
+        {
+            //echo "0 results";
+            $divHTML = false;
+        }
+        
+        return $divHTML;
+    }
+
+
+
+
+    function consultarProductosActivos()
+    {
+        $sql = "select *, TIMESTAMPDIFF(DAY, fecha_creacion, now()) AS dias_transcurridos from tb_producto 
+        inner join tb_existencias on tb_producto.id_producto = tb_existencias.id_producto_existencias
+        where estado_producto = 1
+        order by dias_transcurridos, estado_producto DESC;";
+        
+        $result = $this->mysqlConexion->query($sql);
+        $divHTML = "<div class='row'>";
+
+        if ($result->num_rows > 0) 
+        {
+            // output data of each row
+            while($row = $result->fetch_assoc()) 
+            {
+                $diasTranscurridos = $row["dias_transcurridos"];
+                $estado = $row["estado_producto"];
+                $titulo = "";
+                $label = "";
+                //echo "FECHA diasTranscurridos: ".$diasTranscurridos."<br>";
+
+                if($diasTranscurridos < 30)
+                {
+                    $titulo = "Nuevo";
+                    $label = "new-label";
+                }
+                else
+                {
+                    if($estado == 1)
+                    {
+                        $titulo = "Activo";
+                        $label = "active-label";
+                    }
+                    else
+                    {
+                        $titulo = "Inactivo";
+                        $label = "sale-label";
+                    }
+                }
+
+                $titulo = "Activo";
+                $label = "active-label";
+
+                $divHTML = $divHTML."<div class='col-xl-3 col-lg-4 col-md-6'>
+                <div class='single-product'>
+                    <div class='product-img'>
+                        <span class='pro-label ".$label."'>".$titulo."</span>
+                        <span class='pro-price-2'>$ ".$row["precio_producto"]."</span>
+                        <a  data-bs-toggle='modal'  data-bs-target='#productModal' href='#productModal'><br><br><img src='".$row["imagen"]."' alt='' /></a>
+                    </div>
+                    <div class='product-info clearfix text-center'>
+                        <div class='fix'>
+                            <h4 class='post-title'><a href='#'>".$row["titulo_producto"]." ".$row["id_producto"]."</a></h4>
+                        </div>
+                        <div class='fix'>
+                            <span class='pro-rating'>
+                                <a href='#'><i class='zmdi zmdi-star'></i></a>
+                                <a href='#'><i class='zmdi zmdi-star'></i></a>
+                                <a href='#'><i class='zmdi zmdi-star'></i></a>
+                                <a href='#'><i class='zmdi zmdi-star-half'></i></a>
+                                <a href='#'><i class='zmdi zmdi-star-half'></i></a>
+                            </span>
+                        </div>
+                        
+                        <div class='product-action clearfix'>
+                            <button id='btnEditarProducto".$row["id_producto"]."' type='button' class='btn btn-primary' btnProductoIDEditar='".$row["id_producto"]."' btnProductoTituloEditar='".$row["titulo_producto"]."' btnProductoDescripcionEditar='".$row["descripcion_producto"]."' btnProductoPrecio='".$row["precio_producto"]."' btnProductoImagen='".$row["imagen"]."'>
+                                <ion-icon name='build' onclick='mostrarModalModificar(".$row["id_producto"].")'></ion-icon>
+                            </button>
+                            <button id='btnEliminarProducto".$row["id_producto"]."' type='button' class='btn btn-danger' btnProductoID='".$row["id_producto"]."' btnProductoTitulo='".$row["titulo_producto"]."' btnProductoDescripcion='".$row["descripcion_producto"]."'>
+                                <ion-icon name='trash' onclick='mostrarModalEliminar(".$row["id_producto"].")'></ion-icon>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>";
+            }
+            
+            $divHTML = $divHTML."</div>";
+            
+            //echo $tablaHTML;
+            //return $tablaHTML;
+        }
+        else
+        {
+            //echo "0 results";
+            $divHTML = false;
+        }
+        
+        return $divHTML;
+    }
+
+
+
+
+
+    function consultarProductosNuevos()
+    {
+        $sql = "select *, TIMESTAMPDIFF(DAY, fecha_creacion, now()) AS dias_transcurridos from tb_producto 
+        inner join tb_existencias on tb_producto.id_producto = tb_existencias.id_producto_existencias
+        where estado_producto = 1
+        having dias_transcurridos < 30
+        order by dias_transcurridos, estado_producto DESC;";
+        
+        $result = $this->mysqlConexion->query($sql);
+        $divHTML = "<div class='row'>";
+
+        if ($result->num_rows > 0) 
+        {
+            // output data of each row
+            while($row = $result->fetch_assoc()) 
+            {
+                $diasTranscurridos = $row["dias_transcurridos"];
+                $estado = $row["estado_producto"];
+                $titulo = "";
+                $label = "";
+                //echo "FECHA diasTranscurridos: ".$diasTranscurridos."<br>";
+
+                if($diasTranscurridos < 30)
+                {
+                    $titulo = "Nuevo";
+                    $label = "new-label";
+                }
+                else
+                {
+                    if($estado == 1)
+                    {
+                        $titulo = "Activo";
+                        $label = "active-label";
+                    }
+                    else
+                    {
+                        $titulo = "Inactivo";
+                        $label = "sale-label";
+                    }
+                }
+
+                $titulo = "Nuevo";
+                $label = "new-label";
+
+                $divHTML = $divHTML."<div class='col-xl-3 col-lg-4 col-md-6'>
+                <div class='single-product'>
+                    <div class='product-img'>
+                        <span class='pro-label ".$label."'>".$titulo."</span>
+                        <span class='pro-price-2'>$ ".$row["precio_producto"]."</span>
+                        <a  data-bs-toggle='modal'  data-bs-target='#productModal' href='#productModal'><br><br><img src='".$row["imagen"]."' alt='' /></a>
+                    </div>
+                    <div class='product-info clearfix text-center'>
+                        <div class='fix'>
+                            <h4 class='post-title'><a href='#'>".$row["titulo_producto"]." ".$row["id_producto"]."</a></h4>
+                        </div>
+                        <div class='fix'>
+                            <span class='pro-rating'>
+                                <a href='#'><i class='zmdi zmdi-star'></i></a>
+                                <a href='#'><i class='zmdi zmdi-star'></i></a>
+                                <a href='#'><i class='zmdi zmdi-star'></i></a>
+                                <a href='#'><i class='zmdi zmdi-star-half'></i></a>
+                                <a href='#'><i class='zmdi zmdi-star-half'></i></a>
+                            </span>
+                        </div>
+                        
+                        <div class='product-action clearfix'>
+                            <button id='btnEditarProducto".$row["id_producto"]."' type='button' class='btn btn-primary' btnProductoIDEditar='".$row["id_producto"]."' btnProductoTituloEditar='".$row["titulo_producto"]."' btnProductoDescripcionEditar='".$row["descripcion_producto"]."' btnProductoPrecio='".$row["precio_producto"]."' btnProductoImagen='".$row["imagen"]."'>
+                                <ion-icon name='build' onclick='mostrarModalModificar(".$row["id_producto"].")'></ion-icon>
+                            </button>
+                            <button id='btnEliminarProducto".$row["id_producto"]."' type='button' class='btn btn-danger' btnProductoID='".$row["id_producto"]."' btnProductoTitulo='".$row["titulo_producto"]."' btnProductoDescripcion='".$row["descripcion_producto"]."'>
+                                <ion-icon name='trash' onclick='mostrarModalEliminar(".$row["id_producto"].")'></ion-icon>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>";
+            }
+            
+            $divHTML = $divHTML."</div>";
+            
+            //echo $tablaHTML;
+            //return $tablaHTML;
+        }
+        else
+        {
+            //echo "0 results";
+            $divHTML = false;
+        }
+        
+        return $divHTML;
+    }
+
+
+    function consultarProductosDescontinuados()
+    {
+        $sql = "select *, TIMESTAMPDIFF(DAY, fecha_creacion, now()) AS dias_transcurridos from tb_producto 
+        inner join tb_existencias on tb_producto.id_producto = tb_existencias.id_producto_existencias
+        where estado_producto = 0
+        order by dias_transcurridos, estado_producto DESC;";
+        
+        $result = $this->mysqlConexion->query($sql);
+        $divHTML = "<div class='row'>";
+
+        if ($result->num_rows > 0) 
+        {
+            // output data of each row
+            while($row = $result->fetch_assoc()) 
+            {
+                $diasTranscurridos = $row["dias_transcurridos"];
+                $estado = $row["estado_producto"];
+                $titulo = "";
+                $label = "";
+                //echo "FECHA diasTranscurridos: ".$diasTranscurridos."<br>";
+
+                if($diasTranscurridos < 30)
+                {
+                    $titulo = "Nuevo";
+                    $label = "new-label";
+                }
+                else
+                {
+                    if($estado == 1)
+                    {
+                        $titulo = "Activo";
+                        $label = "active-label";
+                    }
+                    else
+                    {
+                        $titulo = "Inactivo";
+                        $label = "sale-label";
+                    }
+                }
+
+                $titulo = "Inactivo";
+                $label = "sale-label";
+
+                $divHTML = $divHTML."<div class='col-xl-3 col-lg-4 col-md-6'>
+                <div class='single-product'>
+                    <div class='product-img'>
+                        <span class='pro-label ".$label."'>".$titulo."</span>
+                        <span class='pro-price-2'>$ ".$row["precio_producto"]."</span>
+                        <a  data-bs-toggle='modal'  data-bs-target='#productModal' href='#productModal'><br><br><img src='".$row["imagen"]."' alt='' /></a>
+                    </div>
+                    <div class='product-info clearfix text-center'>
+                        <div class='fix'>
+                            <h4 class='post-title'><a href='#'>".$row["titulo_producto"]." ".$row["id_producto"]."</a></h4>
+                        </div>
+                        <div class='fix'>
+                            <span class='pro-rating'>
+                                <a href='#'><i class='zmdi zmdi-star'></i></a>
+                                <a href='#'><i class='zmdi zmdi-star'></i></a>
+                                <a href='#'><i class='zmdi zmdi-star'></i></a>
+                                <a href='#'><i class='zmdi zmdi-star-half'></i></a>
+                                <a href='#'><i class='zmdi zmdi-star-half'></i></a>
+                            </span>
+                        </div>
+                        
+                        <div class='product-action clearfix'>
+                            <button id='btnEditarProducto".$row["id_producto"]."' type='button' class='btn btn-primary' btnProductoIDEditar='".$row["id_producto"]."' btnProductoTituloEditar='".$row["titulo_producto"]."' btnProductoDescripcionEditar='".$row["descripcion_producto"]."' btnProductoPrecio='".$row["precio_producto"]."' btnProductoImagen='".$row["imagen"]."'>
+                                <ion-icon name='build' onclick='mostrarModalModificar(".$row["id_producto"].")'></ion-icon>
+                            </button>
+                            <button id='btnEliminarProducto".$row["id_producto"]."' type='button' class='btn btn-danger' btnProductoID='".$row["id_producto"]."' btnProductoTitulo='".$row["titulo_producto"]."' btnProductoDescripcion='".$row["descripcion_producto"]."'>
+                                <ion-icon name='trash' onclick='mostrarModalEliminar(".$row["id_producto"].")'></ion-icon>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>";
+            }
+            
+            $divHTML = $divHTML."</div>";
+            
+            //echo $tablaHTML;
+            //return $tablaHTML;
+        }
+        else
+        {
+            //echo "0 results";
+            $divHTML = false;
+        }
+        
+        return $divHTML;
+    }
+
+
+
     function consultarProductos()
     {
         $sql = "select * from tb_producto inner join tb_existencias on tb_producto.id_producto = tb_existencias.id_producto_existencias";
@@ -167,58 +720,6 @@ class conexionMySQL
         }
         
         return $tablaHTML;
-    }
-    
-    function consultarTipoPlanta()
-    {
-        $sql = "CALL sp_selectTipoPlanta();";
-        
-        
-        $result = $this->mysqlConexion->query($sql);
-        $tablaHTML2 = "<table id='example' class='table table-striped table-bordered' style='width:100%'>
-                        <thead>
-                            <tr>
-                                <th>Codigo</th>
-                                <th>Descripcion</th>
-                                <th>Imagen</th>
-                            </tr>
-                        </thead>
-                        <tbody>";
-
-        if ($result->num_rows > 0) 
-        {
-            // output data of each row
-            while($row = $result->fetch_assoc()) 
-            {
-                //$tablaHTML = $tablaHTML + "id: " . $row["codigo"]. " - Name: " . $row["identificacionAgricultor"]. " " . $row["fechaSiembra"]. "<br>";
-                
-                $tablaHTML2 = $tablaHTML2."<tr>
-                                <td>".$row["tipo"]."</td>
-                                <td>".$row["descripcion"]."</td>
-                                <td><img width='30' src='images/home/".$row["imagen"]."' class='slider-cycle' alt=''></td>
-                            </tr>";
-            }
-            
-            $tablaHTML2 = $tablaHTML2."</tbody>
-                        <tfoot>
-                            <tr>
-                                <th>Codigo</th>
-                                <th>Descripcion</th>
-                                <th>Imagen</th>
-                            </tr>
-                        </tfoot>
-                    </table>";
-            
-            //echo $tablaHTML;
-            //return $tablaHTML;
-        }
-        else
-        {
-            //echo "0 results";
-            $tablaHTML = false;
-        }
-        
-        return $tablaHTML2;
     }
     
     function desconectarDB()

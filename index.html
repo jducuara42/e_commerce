@@ -42,6 +42,10 @@
 		<link rel="stylesheet" href="css/responsive.css">
 		<!-- modernizr css -->
 		<script src="js/vendor/modernizr-3.11.2.min.js"></script>
+		<!-- index js -->
+		<script src="js/index.js"></script>
+		<!-- confirm js -->
+		<link href="css/jquery-confirm.css" rel="stylesheet">
 	</head>
 	<body>	
 		<!-- WRAPPER START -->
@@ -93,7 +97,7 @@
 													<li class="menu-title">Velones</li>
 													<li><a href="#">Velon 1 flotante</a></li>
 													<li><a href="#">Velon 2 de incienso</a></li>
-													<li><a href="#">Velon 3 dee candelabro</a></li>
+													<li><a href="#">Velon 3 de candelabro</a></li>
 													<li><a href="#">Velon de taco</a></li>
 													<li><a href="#">Velon hueco</a></li>
 													<li><a href="#">Velon electronico</a></li>
@@ -111,7 +115,7 @@
 									</div>
 								</div>
 							</li>
-							<li><a href="shop-sidebar.html">Agregar producto</a></li>
+							<li><a onclick="mostrarModalAgregar()">Agregar producto</a></li>
 							<li><a href="shop-sidebar.html">Informe ventas</a></li>
 							<li><a href="shop-list.html">Informe calidad</a></li>
 						</ul>
@@ -266,472 +270,14 @@
 									
 									
 									<!-- LISTA DE TODOS LOS PRODUCTOS -->
-									<div class="row">
-										<!-- Single-product start -->
-										<div class="col-xl-3 col-lg-4 col-md-6">
-											<div class="single-product">
-												<div class="product-img">
-													<span class="pro-label new-label">Nuevo</span>
-													<span class="pro-price-2">$ 56.20</span>
-													<a  data-bs-toggle="modal"  data-bs-target="#productModal" href="#productModal"><br><br><img src="imagenes_ecommerce/productos/vela1.png" alt="" /></a>
-												</div>
-												<div class="product-info clearfix text-center">
-													<div class="fix">
-														<h4 class="post-title"><a href="#">vela 1</a></h4>
-													</div>
-													<div class="fix">
-														<span class="pro-rating">
-															<a href="#"><i class="zmdi zmdi-star"></i></a>
-															<a href="#"><i class="zmdi zmdi-star"></i></a>
-															<a href="#"><i class="zmdi zmdi-star"></i></a>
-															<a href="#"><i class="zmdi zmdi-star-half"></i></a>
-															<a href="#"><i class="zmdi zmdi-star-half"></i></a>
-														</span>
-													</div>
-													
-													<div class="product-action clearfix">
-														<button type="button" class="btn btn-primary"><ion-icon name="build" onclick="mostrarModalModificar()"></ion-icon></button>
-														<button type="button" class="btn btn-danger"><ion-icon name="trash" onclick="mostrarModalEliminar()"></ion-icon></button>
-													</div>
-												</div>
-											</div>
-										</div>
-										<!-- Single-product end -->
-										<!-- Single-product start -->
-										<div class="col-xl-3 col-lg-4 col-md-6">
-											<div class="single-product">
-												<div class="product-img">
-													<span class="pro-label new-label">Nuevo</span>
-													<span class="pro-price-2">$ 56.20</span>
-													<a  data-bs-toggle="modal"  data-bs-target="#productModal" href="#productModal"><br><br><img src="imagenes_ecommerce/productos/vela1.png" alt="" /></a>
-												</div>
-												<div class="product-info clearfix text-center">
-													<div class="fix">
-														<h4 class="post-title"><a href="#">vela 2</a></h4>
-													</div>
-													<div class="fix">
-														<span class="pro-rating">
-															<a href="#"><i class="zmdi zmdi-star"></i></a>
-															<a href="#"><i class="zmdi zmdi-star"></i></a>
-															<a href="#"><i class="zmdi zmdi-star"></i></a>
-															<a href="#"><i class="zmdi zmdi-star-half"></i></a>
-															<a href="#"><i class="zmdi zmdi-star-half"></i></a>
-														</span>
-													</div>
-													<div class="product-action clearfix">
-														<button type="button" class="btn btn-primary"><ion-icon name="build" onclick="mostrarModalModificar()"></ion-icon></button>
-														<button type="button" class="btn btn-danger"><ion-icon name="trash" onclick="mostrarModalEliminar()"></ion-icon></button>
-													</div>
-												</div>
-											</div>
-										</div>
-										<!-- Single-product end -->
-										<!-- Single-product start -->
-										<div class="col-xl-3 col-lg-4 col-md-6">
-											<div class="single-product">
-												<div class="product-img">
-													<span class="pro-label new-label">Nuevo</span>
-													<span class="pro-price-2">$ 56.20</span>
-													<a  data-bs-toggle="modal"  data-bs-target="#productModal" href="#productModal"><br><br><img src="imagenes_ecommerce/productos/vela1.png" alt="" /></a>
-												</div>
-												<div class="product-info clearfix text-center">
-													<div class="fix">
-														<h4 class="post-title"><a href="#">vela 3</a></h4>
-													</div>
-													<div class="fix">
-														<span class="pro-rating">
-															<a href="#"><i class="zmdi zmdi-star"></i></a>
-															<a href="#"><i class="zmdi zmdi-star"></i></a>
-															<a href="#"><i class="zmdi zmdi-star"></i></a>
-															<a href="#"><i class="zmdi zmdi-star-half"></i></a>
-															<a href="#"><i class="zmdi zmdi-star-half"></i></a>
-														</span>
-													</div>
-													<div class="product-action clearfix">
-														<button type="button" class="btn btn-primary"><ion-icon name="build" onclick="mostrarModalModificar()"></ion-icon></button>
-														<button type="button" class="btn btn-danger"><ion-icon name="trash" onclick="mostrarModalEliminar()"></ion-icon></button>
-													</div>
-												</div>
-											</div>
-										</div>
-										<!-- Single-product end -->
-										<!-- Single-product start -->
-										<div class="col-xl-3 col-lg-4 col-md-6">
-											<div class="single-product">
-												<div class="product-img">
-													<span class="pro-label new-label">Activo</span>
-													<span class="pro-price-2">$ 56.20</span>
-													<a  data-bs-toggle="modal"  data-bs-target="#productModal" href="#productModal"><br><br><img src="imagenes_ecommerce/productos/vela2.png" alt="" /></a>
-												</div>
-												<div class="product-info clearfix text-center">
-													<div class="fix">
-														<h4 class="post-title"><a href="#">vela 4</a></h4>
-													</div>
-													<div class="fix">
-														<span class="pro-rating">
-															<a href="#"><i class="zmdi zmdi-star"></i></a>
-															<a href="#"><i class="zmdi zmdi-star"></i></a>
-															<a href="#"><i class="zmdi zmdi-star"></i></a>
-															<a href="#"><i class="zmdi zmdi-star-half"></i></a>
-															<a href="#"><i class="zmdi zmdi-star-half"></i></a>
-														</span>
-													</div>
-													<div class="product-action clearfix">
-														<button type="button" class="btn btn-primary"><ion-icon name="build" onclick="mostrarModalModificar()"></ion-icon></button>
-														<button type="button" class="btn btn-danger"><ion-icon name="trash" onclick="mostrarModalEliminar()"></ion-icon></button>
-													</div>
-												</div>
-											</div>
-										</div>
-										<!-- Single-product end -->
-										<!-- Single-product start -->
-										<div class="col-xl-3 col-lg-4 col-md-6">
-											<div class="single-product">
-												<div class="product-img">
-													<span class="pro-label new-label">Activo</span>
-													<span class="pro-price-2">$ 56.20</span>
-													<a  data-bs-toggle="modal"  data-bs-target="#productModal" href="#productModal"><br><br><img src="imagenes_ecommerce/productos/vela2.png"  alt="" /></a>
-												</div>
-												<div class="product-info clearfix text-center">
-													<div class="fix">
-														<h4 class="post-title"><a href="#">vela 5</a></h4>
-													</div>
-													<div class="fix">
-														<span class="pro-rating">
-															<a href="#"><i class="zmdi zmdi-star"></i></a>
-															<a href="#"><i class="zmdi zmdi-star"></i></a>
-															<a href="#"><i class="zmdi zmdi-star"></i></a>
-															<a href="#"><i class="zmdi zmdi-star-half"></i></a>
-															<a href="#"><i class="zmdi zmdi-star-half"></i></a>
-														</span>
-													</div>
-													<div class="product-action clearfix">
-														<button type="button" class="btn btn-primary"><ion-icon name="build" onclick="mostrarModalModificar()"></ion-icon></button>
-														<button type="button" class="btn btn-danger"><ion-icon name="trash" onclick="mostrarModalEliminar()"></ion-icon></button>
-													</div>
-												</div>
-											</div>
-										</div>
-										<!-- Single-product end -->
-										<!-- Single-product start -->
-										<div class="col-xl-3 col-lg-4 col-md-6">
-											<div class="single-product">
-												<div class="product-img">
-													<span class="pro-label new-label">Activo</span>
-													<span class="pro-price-2">$ 56.20</span>
-													<a  data-bs-toggle="modal"  data-bs-target="#productModal" href="#productModal"><br><br><img src="imagenes_ecommerce/productos/vela2.png" alt="" /></a>
-												</div>
-												<div class="product-info clearfix text-center">
-													<div class="fix">
-														<h4 class="post-title"><a href="#">vela 7</a></h4>
-													</div>
-													<div class="fix">
-														<span class="pro-rating">
-															<a href="#"><i class="zmdi zmdi-star"></i></a>
-															<a href="#"><i class="zmdi zmdi-star"></i></a>
-															<a href="#"><i class="zmdi zmdi-star"></i></a>
-															<a href="#"><i class="zmdi zmdi-star-half"></i></a>
-															<a href="#"><i class="zmdi zmdi-star-half"></i></a>
-														</span>
-													</div>
-													<div class="product-action clearfix">
-														<button type="button" class="btn btn-primary"><ion-icon name="build" onclick="mostrarModalModificar()"></ion-icon></button>
-														<button type="button" class="btn btn-danger"><ion-icon name="trash" onclick="mostrarModalEliminar()"></ion-icon></button>
-													</div>
-												</div>
-											</div>
-										</div>
-										<!-- Single-product end -->
-										<!-- Single-product start -->
-										<div class="col-xl-3 col-lg-4 col-md-6">
-											<div class="single-product">
-												<div class="product-img">
-													<span class="pro-label sale-label">Desactivado</span>
-													<span class="pro-price-2">$ 56.20</span>
-													<a  data-bs-toggle="modal"  data-bs-target="#productModal" href="#productModal"><br><br><img src="imagenes_ecommerce/productos/vela3.png" alt="" /></a>
-												</div>
-												<div class="product-info clearfix text-center">
-													<div class="fix">
-														<h4 class="post-title"><a href="#">vela 8</a></h4>
-													</div>
-													<div class="fix">
-														<span class="pro-rating">
-															<a href="#"><i class="zmdi zmdi-star"></i></a>
-															<a href="#"><i class="zmdi zmdi-star"></i></a>
-															<a href="#"><i class="zmdi zmdi-star"></i></a>
-															<a href="#"><i class="zmdi zmdi-star-half"></i></a>
-															<a href="#"><i class="zmdi zmdi-star-half"></i></a>
-														</span>
-													</div>
-													<div class="product-action clearfix">
-														<button type="button" class="btn btn-primary"><ion-icon name="build" onclick="mostrarModalModificar()"></ion-icon></button>
-														<button type="button" class="btn btn-danger"><ion-icon name="trash" onclick="mostrarModalEliminar()"></ion-icon></button>
-													</div>
-												</div>
-											</div>
-										</div>
-										<!-- Single-product end -->
-										<!-- Single-product start -->
-										<div class="col-xl-3 col-lg-4 col-md-6">
-											<div class="single-product">
-												<div class="product-img">
-													<span class="pro-label sale-label">Desactivado</span>
-													<span class="pro-price-2">$ 56.20</span>
-													<a data-bs-toggle="modal"  data-bs-target="#productModal" href="#productModal"><br><br><img src="imagenes_ecommerce/productos/vela3.png" alt="" /></a>
-												</div>
-												<div class="product-info clearfix text-center">
-													<div class="fix">
-														<h4 class="post-title"><a href="#">vela 9</a></h4>
-													</div>
-													<div class="fix">
-														<span class="pro-rating">
-															<a href="#"><i class="zmdi zmdi-star"></i></a>
-															<a href="#"><i class="zmdi zmdi-star"></i></a>
-															<a href="#"><i class="zmdi zmdi-star"></i></a>
-															<a href="#"><i class="zmdi zmdi-star-half"></i></a>
-															<a href="#"><i class="zmdi zmdi-star-half"></i></a>
-														</span>
-													</div>
-													<div class="product-action clearfix">
-														<button type="button" class="btn btn-primary"><ion-icon name="build" onclick="mostrarModalModificar()"></ion-icon></button>
-														<button type="button" class="btn btn-danger"><ion-icon name="trash" onclick="mostrarModalEliminar()"></ion-icon></button>
-													</div>
-												</div>
-											</div>
-										</div>
-										<!-- Single-product end -->							
-									</div>
+									<div id="divProductosTodos"></div>
+										
 								</div>
 
 
 								<!-- LISTA DE TODOS LOS PRODUCTOS ACTIVOS-->
 								<div class="tab-pane" id="best-seller">
-									<div class="row">
-										<!-- Single-product start -->
-										<div class="col-xl-3 col-lg-4 col-md-6">
-											<div class="single-product">
-												<div class="product-img">
-													<span class="pro-price-2">$ 56.20</span>
-													<a  data-bs-toggle="modal"  data-bs-target="#productModal" href="#productModal"><br><br><img src="imagenes_ecommerce/productos/vela2.png" alt="" /></a>
-												</div>
-												<div class="product-info clearfix text-center">
-													<div class="fix">
-														<h4 class="post-title"><a href="#">Vela 1 activa</a></h4>
-													</div>
-													<div class="fix">
-														<span class="pro-rating">
-															<a href="#"><i class="zmdi zmdi-star"></i></a>
-															<a href="#"><i class="zmdi zmdi-star"></i></a>
-															<a href="#"><i class="zmdi zmdi-star"></i></a>
-															<a href="#"><i class="zmdi zmdi-star-half"></i></a>
-															<a href="#"><i class="zmdi zmdi-star-half"></i></a>
-														</span>
-													</div>
-													<div class="product-action clearfix">
-														<button type="button" class="btn btn-primary"><ion-icon name="build" onclick="mostrarModalModificar()"></ion-icon></button>
-														<button type="button" class="btn btn-danger"><ion-icon name="trash" onclick="mostrarModalEliminar()"></ion-icon></button>
-													</div>
-												</div>
-											</div>
-										</div>
-										<!-- Single-product end -->
-										<!-- Single-product start -->
-										<div class="col-xl-3 col-lg-4 col-md-6">
-											<div class="single-product">
-												<div class="product-img">
-													<span class="pro-price-2">$ 56.20</span>
-													<a  data-bs-toggle="modal"  data-bs-target="#productModal" href="#productModal"><br><br><img src="imagenes_ecommerce/productos/vela2.png" alt="" /></a>
-												</div>
-												<div class="product-info clearfix text-center">
-													<div class="fix">
-														<h4 class="post-title"><a href="#">Vela 2 activa</a></h4>
-													</div>
-													<div class="fix">
-														<span class="pro-rating">
-															<a href="#"><i class="zmdi zmdi-star"></i></a>
-															<a href="#"><i class="zmdi zmdi-star"></i></a>
-															<a href="#"><i class="zmdi zmdi-star"></i></a>
-															<a href="#"><i class="zmdi zmdi-star-half"></i></a>
-															<a href="#"><i class="zmdi zmdi-star-half"></i></a>
-														</span>
-													</div>
-													<div class="product-action clearfix">
-														<button type="button" class="btn btn-primary"><ion-icon name="build" onclick="mostrarModalModificar()"></ion-icon></button>
-														<button type="button" class="btn btn-danger"><ion-icon name="trash" onclick="mostrarModalEliminar()"></ion-icon></button>
-													</div>
-												</div>
-											</div>
-										</div>
-										<!-- Single-product end -->
-										<!-- Single-product start -->
-										<div class="col-xl-3 col-lg-4 col-md-6">
-											<div class="single-product">
-												<div class="product-img">
-													<span class="pro-price-2">$ 56.20</span>
-													<a  data-bs-toggle="modal"  data-bs-target="#productModal" href="#productModal"><br><br><img src="imagenes_ecommerce/productos/vela2.png" alt="" /></a>
-												</div>
-												<div class="product-info clearfix text-center">
-													<div class="fix">
-														<h4 class="post-title"><a href="#">Vela 3 activa</a></h4>
-													</div>
-													<div class="fix">
-														<span class="pro-rating">
-															<a href="#"><i class="zmdi zmdi-star"></i></a>
-															<a href="#"><i class="zmdi zmdi-star"></i></a>
-															<a href="#"><i class="zmdi zmdi-star"></i></a>
-															<a href="#"><i class="zmdi zmdi-star-half"></i></a>
-															<a href="#"><i class="zmdi zmdi-star-half"></i></a>
-														</span>
-													</div>
-													<div class="product-action clearfix">
-														<button type="button" class="btn btn-primary"><ion-icon name="build" onclick="mostrarModalModificar()"></ion-icon></button>
-														<button type="button" class="btn btn-danger"><ion-icon name="trash" onclick="mostrarModalEliminar()"></ion-icon></button>
-													</div>
-												</div>
-											</div>
-										</div>
-										<!-- Single-product end -->
-										<!-- Single-product start -->
-										<div class="col-xl-3 col-lg-4 col-md-6">
-											<div class="single-product">
-												<div class="product-img">
-													<span class="pro-price-2">$ 56.20</span>
-													<a  data-bs-toggle="modal"  data-bs-target="#productModal" href="#productModal"><br><br><img src="imagenes_ecommerce/productos/vela2.png" alt="" /></a>
-												</div>
-												<div class="product-info clearfix text-center">
-													<div class="fix">
-														<h4 class="post-title"><a href="#">Vela 4 activa</a></h4>
-													</div>
-													<div class="fix">
-														<span class="pro-rating">
-															<a href="#"><i class="zmdi zmdi-star"></i></a>
-															<a href="#"><i class="zmdi zmdi-star"></i></a>
-															<a href="#"><i class="zmdi zmdi-star"></i></a>
-															<a href="#"><i class="zmdi zmdi-star-half"></i></a>
-															<a href="#"><i class="zmdi zmdi-star-half"></i></a>
-														</span>
-													</div>
-													<div class="product-action clearfix">
-														<button type="button" class="btn btn-primary"><ion-icon name="build" onclick="mostrarModalModificar()"></ion-icon></button>
-														<button type="button" class="btn btn-danger"><ion-icon name="trash" onclick="mostrarModalEliminar()"></ion-icon></button>
-													</div>
-												</div>
-											</div>
-										</div>
-										<!-- Single-product end -->
-										<!-- Single-product start -->
-										<div class="col-xl-3 col-lg-4 col-md-6">
-											<div class="single-product">
-												<div class="product-img">
-													<span class="pro-price-2">$ 56.20</span>
-													<a  data-bs-toggle="modal"  data-bs-target="#productModal" href="#productModal"><br><br><img src="imagenes_ecommerce/productos/vela2.png" alt="" /></a>
-												</div>
-												<div class="product-info clearfix text-center">
-													<div class="fix">
-														<h4 class="post-title"><a href="#">Vela 5 activa</a></h4>
-													</div>
-													<div class="fix">
-														<span class="pro-rating">
-															<a href="#"><i class="zmdi zmdi-star"></i></a>
-															<a href="#"><i class="zmdi zmdi-star"></i></a>
-															<a href="#"><i class="zmdi zmdi-star"></i></a>
-															<a href="#"><i class="zmdi zmdi-star-half"></i></a>
-															<a href="#"><i class="zmdi zmdi-star-half"></i></a>
-														</span>
-													</div>
-													<div class="product-action clearfix">
-														<button type="button" class="btn btn-primary"><ion-icon name="build" onclick="mostrarModalModificar()"></ion-icon></button>
-														<button type="button" class="btn btn-danger"><ion-icon name="trash" onclick="mostrarModalEliminar()"></ion-icon></button>
-													</div>
-												</div>
-											</div>
-										</div>
-										<!-- Single-product end -->
-										<!-- Single-product start -->
-										<div class="col-xl-3 col-lg-4 col-md-6">
-											<div class="single-product">
-												<div class="product-img">
-													<span class="pro-price-2">$ 56.20</span>
-													<a  data-bs-toggle="modal"  data-bs-target="#productModal" href="#productModal"><br><br><img src="imagenes_ecommerce/productos/vela2.png" alt="" /></a>
-												</div>
-												<div class="product-info clearfix text-center">
-													<div class="fix">
-														<h4 class="post-title"><a href="#">Vela 6 activa</a></h4>
-													</div>
-													<div class="fix">
-														<span class="pro-rating">
-															<a href="#"><i class="zmdi zmdi-star"></i></a>
-															<a href="#"><i class="zmdi zmdi-star"></i></a>
-															<a href="#"><i class="zmdi zmdi-star"></i></a>
-															<a href="#"><i class="zmdi zmdi-star-half"></i></a>
-															<a href="#"><i class="zmdi zmdi-star-half"></i></a>
-														</span>
-													</div>
-													<div class="product-action clearfix">
-														<button type="button" class="btn btn-primary"><ion-icon name="build" onclick="mostrarModalModificar()"></ion-icon></button>
-														<button type="button" class="btn btn-danger"><ion-icon name="trash" onclick="mostrarModalEliminar()"></ion-icon></button>
-													</div>
-												</div>
-											</div>
-										</div>
-										<!-- Single-product end -->
-										<!-- Single-product start -->
-										<div class="col-xl-3 col-lg-4 col-md-6">
-											<div class="single-product">
-												<div class="product-img">
-													<span class="pro-price-2">$ 56.20</span>
-													<a  data-bs-toggle="modal"  data-bs-target="#productModal" href="#productModal"><br><br><img src="imagenes_ecommerce/productos/vela2.png" alt="" /></a>
-												</div>
-												<div class="product-info clearfix text-center">
-													<div class="fix">
-														<h4 class="post-title"><a href="#">Vela 7 activa</a></h4>
-													</div>
-													<div class="fix">
-														<span class="pro-rating">
-															<a href="#"><i class="zmdi zmdi-star"></i></a>
-															<a href="#"><i class="zmdi zmdi-star"></i></a>
-															<a href="#"><i class="zmdi zmdi-star"></i></a>
-															<a href="#"><i class="zmdi zmdi-star-half"></i></a>
-															<a href="#"><i class="zmdi zmdi-star-half"></i></a>
-														</span>
-													</div>
-													<div class="product-action clearfix">
-														<button type="button" class="btn btn-primary"><ion-icon name="build" onclick="mostrarModalModificar()"></ion-icon></button>
-														<button type="button" class="btn btn-danger"><ion-icon name="trash" onclick="mostrarModalEliminar()"></ion-icon></button>
-													</div>
-												</div>
-											</div>
-										</div>
-										<!-- Single-product end -->
-										<!-- Single-product start -->
-										<div class="col-xl-3 col-lg-4 col-md-6">
-											<div class="single-product">
-												<div class="product-img">
-													<span class="pro-price-2">$ 56.20</span>
-													<a  data-bs-toggle="modal"  data-bs-target="#productModal" href="#productModal"><br><br><img src="imagenes_ecommerce/productos/vela2.png" alt="" /></a>
-												</div>
-												<div class="product-info clearfix text-center">
-													<div class="fix">
-														<h4 class="post-title"><a href="#">Vela 8 activa</a></h4>
-													</div>
-													<div class="fix">
-														<span class="pro-rating">
-															<a href="#"><i class="zmdi zmdi-star"></i></a>
-															<a href="#"><i class="zmdi zmdi-star"></i></a>
-															<a href="#"><i class="zmdi zmdi-star"></i></a>
-															<a href="#"><i class="zmdi zmdi-star-half"></i></a>
-															<a href="#"><i class="zmdi zmdi-star-half"></i></a>
-														</span>
-													</div>
-													<div class="product-action clearfix">
-														<button type="button" class="btn btn-primary"><ion-icon name="build" onclick="mostrarModalModificar()"></ion-icon></button>
-														<button type="button" class="btn btn-danger"><ion-icon name="trash" onclick="mostrarModalEliminar()"></ion-icon></button>
-													</div>
-												</div>
-											</div>
-										</div>
-										<!-- Single-product end -->							
-									</div>					
+									<div id="divProductosActivos"></div>
 								</div>
 
 
@@ -739,394 +285,14 @@
 
 								<!-- LISTA DE TODOS LOS PRODUCTOS NUEVOS-->
 								<div class="tab-pane" id="most-view">
-									<div class="row">
-										<!-- Single-product start -->
-										<div class="col-xl-3 col-lg-4 col-md-6">
-											<div class="single-product">
-												<div class="product-img">
-													<span class="pro-label new-label">new</span>
-													<span class="pro-price-2">$ 56.20</span>
-													<a  data-bs-toggle="modal"  data-bs-target="#productModal" href="#productModal"><br><br><img src="imagenes_ecommerce/productos/vela1.png" alt="" /></a>
-												</div>
-												<div class="product-info clearfix text-center">
-													<div class="fix">
-														<h4 class="post-title"><a href="#">Vela 1 NUEVA</a></h4>
-													</div>
-													<div class="fix">
-														<span class="pro-rating">
-															<a href="#"><i class="zmdi zmdi-star"></i></a>
-															<a href="#"><i class="zmdi zmdi-star"></i></a>
-															<a href="#"><i class="zmdi zmdi-star"></i></a>
-															<a href="#"><i class="zmdi zmdi-star-half"></i></a>
-															<a href="#"><i class="zmdi zmdi-star-half"></i></a>
-														</span>
-													</div>
-													<div class="product-action clearfix">
-														<button type="button" class="btn btn-primary"><ion-icon name="build" onclick="mostrarModalModificar()"></ion-icon></button>
-														<button type="button" class="btn btn-danger"><ion-icon name="trash" onclick="mostrarModalEliminar()"></ion-icon></button>
-													</div>
-												</div>
-											</div>
-										</div>
-										<!-- Single-product end -->
-										<!-- Single-product start -->
-										<div class="col-xl-3 col-lg-4 col-md-6">
-											<div class="single-product">
-												<div class="product-img">
-													<span class="pro-label new-label">new</span>
-													<span class="pro-price-2">$ 56.20</span>
-													<a  data-bs-toggle="modal"  data-bs-target="#productModal" href="#productModal"><br><br><img src="imagenes_ecommerce/productos/vela1.png" alt="" /></a>
-												</div>
-												<div class="product-info clearfix text-center">
-													<div class="fix">
-														<h4 class="post-title"><a href="#">Vela 2 NUEVA</a></h4>
-													</div>
-													<div class="fix">
-														<span class="pro-rating">
-															<a href="#"><i class="zmdi zmdi-star"></i></a>
-															<a href="#"><i class="zmdi zmdi-star"></i></a>
-															<a href="#"><i class="zmdi zmdi-star"></i></a>
-															<a href="#"><i class="zmdi zmdi-star-half"></i></a>
-															<a href="#"><i class="zmdi zmdi-star-half"></i></a>
-														</span>
-													</div>
-													<div class="product-action clearfix">
-														<button type="button" class="btn btn-primary"><ion-icon name="build" onclick="mostrarModalModificar()"></ion-icon></button>
-														<button type="button" class="btn btn-danger"><ion-icon name="trash" onclick="mostrarModalEliminar()"></ion-icon></button>
-													</div>
-												</div>
-											</div>
-										</div>
-										<!-- Single-product end -->
-										<!-- Single-product start -->
-										<div class="col-xl-3 col-lg-4 col-md-6">
-											<div class="single-product">
-												<div class="product-img">
-													<span class="pro-label new-label">new</span>
-													<span class="pro-price-2">$ 56.20</span>
-													<a  data-bs-toggle="modal"  data-bs-target="#productModal" href="#productModal"><br><br><img src="imagenes_ecommerce/productos/vela1.png" alt="" /></a>
-												</div>
-												<div class="product-info clearfix text-center">
-													<div class="fix">
-														<h4 class="post-title"><a href="#">Vela 3 NUEVA</a></h4>
-													</div>
-													<div class="fix">
-														<span class="pro-rating">
-															<a href="#"><i class="zmdi zmdi-star"></i></a>
-															<a href="#"><i class="zmdi zmdi-star"></i></a>
-															<a href="#"><i class="zmdi zmdi-star"></i></a>
-															<a href="#"><i class="zmdi zmdi-star-half"></i></a>
-															<a href="#"><i class="zmdi zmdi-star-half"></i></a>
-														</span>
-													</div>
-													<div class="product-action clearfix">
-														<button type="button" class="btn btn-primary"><ion-icon name="build" onclick="mostrarModalModificar()"></ion-icon></button>
-														<button type="button" class="btn btn-danger"><ion-icon name="trash" onclick="mostrarModalEliminar()"></ion-icon></button>
-													</div>
-												</div>
-											</div>
-										</div>
-										<!-- Single-product end -->
-										<!-- Single-product start -->
-										<div class="col-xl-3 col-lg-4 col-md-6">
-											<div class="single-product">
-												<div class="product-img">
-													<span class="pro-label new-label">new</span>
-													<span class="pro-price-2">$ 56.20</span>
-													<a  data-bs-toggle="modal"  data-bs-target="#productModal" href="#productModal"><br><br><img src="imagenes_ecommerce/productos/vela1.png" alt="" /></a>
-												</div>
-												<div class="product-info clearfix text-center">
-													<div class="fix">
-														<h4 class="post-title"><a href="#">Vela 4 NUEVA</a></h4>
-													</div>
-													<div class="fix">
-														<span class="pro-rating">
-															<a href="#"><i class="zmdi zmdi-star"></i></a>
-															<a href="#"><i class="zmdi zmdi-star"></i></a>
-															<a href="#"><i class="zmdi zmdi-star"></i></a>
-															<a href="#"><i class="zmdi zmdi-star-half"></i></a>
-															<a href="#"><i class="zmdi zmdi-star-half"></i></a>
-														</span>
-													</div>
-													<div class="product-action clearfix">
-														<button type="button" class="btn btn-primary"><ion-icon name="build" onclick="mostrarModalModificar()"></ion-icon></button>
-														<button type="button" class="btn btn-danger"><ion-icon name="trash" onclick="mostrarModalEliminar()"></ion-icon></button>
-													</div>
-												</div>
-											</div>
-										</div>
-										<!-- Single-product end -->
-										<!-- Single-product start -->
-										<div class="col-xl-3 col-lg-4 col-md-6">
-											<div class="single-product">
-												<div class="product-img">
-													<span class="pro-label new-label">new</span>
-													<span class="pro-price-2">$ 56.20</span>
-													<a  data-bs-toggle="modal"  data-bs-target="#productModal" href="#productModal"><br><br><img src="imagenes_ecommerce/productos/vela1.png" alt="" /></a>
-												</div>
-												<div class="product-info clearfix text-center">
-													<div class="fix">
-														<h4 class="post-title"><a href="#">Vela 5 NUEVA</a></h4>
-													</div>
-													<div class="fix">
-														<span class="pro-rating">
-															<a href="#"><i class="zmdi zmdi-star"></i></a>
-															<a href="#"><i class="zmdi zmdi-star"></i></a>
-															<a href="#"><i class="zmdi zmdi-star"></i></a>
-															<a href="#"><i class="zmdi zmdi-star-half"></i></a>
-															<a href="#"><i class="zmdi zmdi-star-half"></i></a>
-														</span>
-													</div>
-													<div class="product-action clearfix">
-														<button type="button" class="btn btn-primary"><ion-icon name="build" onclick="mostrarModalModificar()"></ion-icon></button>
-														<button type="button" class="btn btn-danger"><ion-icon name="trash" onclick="mostrarModalEliminar()"></ion-icon></button>
-													</div>
-												</div>
-											</div>
-										</div>
-										<!-- Single-product end -->
-										<!-- Single-product start -->
-										<div class="col-xl-3 col-lg-4 col-md-6">
-											<div class="single-product">
-												<div class="product-img">
-													<span class="pro-label new-label">new</span>
-													<span class="pro-price-2">$ 56.20</span>
-													<a  data-bs-toggle="modal"  data-bs-target="#productModal" href="#productModal"><br><br><img src="imagenes_ecommerce/productos/vela1.png" alt="" /></a>
-												</div>
-												<div class="product-info clearfix text-center">
-													<div class="fix">
-														<h4 class="post-title"><a href="#">Vela 6 NUEVA</a></h4>
-													</div>
-													<div class="fix">
-														<span class="pro-rating">
-															<a href="#"><i class="zmdi zmdi-star"></i></a>
-															<a href="#"><i class="zmdi zmdi-star"></i></a>
-															<a href="#"><i class="zmdi zmdi-star"></i></a>
-															<a href="#"><i class="zmdi zmdi-star-half"></i></a>
-															<a href="#"><i class="zmdi zmdi-star-half"></i></a>
-														</span>
-													</div>
-													<div class="product-action clearfix">
-														<button type="button" class="btn btn-primary"><ion-icon name="build" onclick="mostrarModalModificar()"></ion-icon></button>
-														<button type="button" class="btn btn-danger"><ion-icon name="trash" onclick="mostrarModalEliminar()"></ion-icon></button>
-													</div>
-												</div>
-											</div>
-										</div>
-										<!-- Single-product end -->
-										<!-- Single-product start -->
-										<div class="col-xl-3 col-lg-4 col-md-6">
-											<div class="single-product">
-												<div class="product-img">
-													<span class="pro-label new-label">new</span>
-													<span class="pro-price-2">$ 56.20</span>
-													<a  data-bs-toggle="modal"  data-bs-target="#productModal" href="#productModal"><br><br><img src="imagenes_ecommerce/productos/vela1.png" alt="" /></a>
-												</div>
-												<div class="product-info clearfix text-center">
-													<div class="fix">
-														<h4 class="post-title"><a href="#">Vela 7 NUEVA</a></h4>
-													</div>
-													<div class="fix">
-														<span class="pro-rating">
-															<a href="#"><i class="zmdi zmdi-star"></i></a>
-															<a href="#"><i class="zmdi zmdi-star"></i></a>
-															<a href="#"><i class="zmdi zmdi-star"></i></a>
-															<a href="#"><i class="zmdi zmdi-star-half"></i></a>
-															<a href="#"><i class="zmdi zmdi-star-half"></i></a>
-														</span>
-													</div>
-													<div class="product-action clearfix">
-														<button type="button" class="btn btn-primary"><ion-icon name="build" onclick="mostrarModalModificar()"></ion-icon></button>
-														<button type="button" class="btn btn-danger"><ion-icon name="trash" onclick="mostrarModalEliminar()"></ion-icon></button>
-													</div>
-												</div>
-											</div>
-										</div>
-										<!-- Single-product end -->
-
-
-
-
-
-										<!-- LISTA DE TODOS LOS PRODUCTOS DESACTIVADOS-->
-										<!-- Single-product start -->
-										<div class="col-xl-3 col-lg-4 col-md-6">
-											<div class="single-product">
-												<div class="product-img">
-													<span class="pro-label new-label">new</span>
-													<span class="pro-price-2">$ 56.20</span>
-													<a  data-bs-toggle="modal"  data-bs-target="#productModal" href="#productModal"><br><br><img src="imagenes_ecommerce/productos/vela1.png" alt="" /></a>
-												</div>
-												<div class="product-info clearfix text-center">
-													<div class="fix">
-														<h4 class="post-title"><a href="#">Vela 8 NUEVA</a></h4>
-													</div>
-													<div class="fix">
-														<span class="pro-rating">
-															<a href="#"><i class="zmdi zmdi-star"></i></a>
-															<a href="#"><i class="zmdi zmdi-star"></i></a>
-															<a href="#"><i class="zmdi zmdi-star"></i></a>
-															<a href="#"><i class="zmdi zmdi-star-half"></i></a>
-															<a href="#"><i class="zmdi zmdi-star-half"></i></a>
-														</span>
-													</div>
-													<div class="product-action clearfix">
-														<button type="button" class="btn btn-primary"><ion-icon name="build" onclick="mostrarModalModificar()"></ion-icon></button>
-														<button type="button" class="btn btn-danger"><ion-icon name="trash" onclick="mostrarModalEliminar()"></ion-icon></button>
-													</div>
-												</div>
-											</div>
-										</div>
-										<!-- Single-product end -->							
-									</div>						
+									<div id="divProductosNuevos"></div>
 								</div>
+
+
 								<div class="tab-pane" id="discounts">
-									<div class="row">
-										<!-- Single-product start -->
-										<div class="col-xl-3 col-lg-4 col-md-6">
-											<div class="single-product">
-												<div class="product-img">
-													<span class="pro-label sale-label">sale</span>
-													<span class="pro-price-2">$ 56.20</span>
-													<a  data-bs-toggle="modal"  data-bs-target="#productModal" href="#productModal"><br><br><img src="imagenes_ecommerce/productos/vela3.png" alt="" /></a>
-												</div>
-												<div class="product-info clearfix text-center">
-													<div class="fix">
-														<h4 class="post-title"><a href="#">dummy Product name</a></h4>
-													</div>
-													<div class="fix">
-														<span class="pro-rating">
-															<a href="#"><i class="zmdi zmdi-star"></i></a>
-															<a href="#"><i class="zmdi zmdi-star"></i></a>
-															<a href="#"><i class="zmdi zmdi-star"></i></a>
-															<a href="#"><i class="zmdi zmdi-star-half"></i></a>
-															<a href="#"><i class="zmdi zmdi-star-half"></i></a>
-														</span>
-													</div>
-													<div class="product-action clearfix">
-														<button type="button" class="btn btn-primary"><ion-icon name="build" onclick="mostrarModalModificar()"></ion-icon></button>
-														<button type="button" class="btn btn-danger"><ion-icon name="trash" onclick="mostrarModalEliminar()"></ion-icon></button>
-													</div>
-												</div>
-											</div>
-										</div>
-										<!-- Single-product end -->
-										<!-- Single-product start -->
-										<div class="col-xl-3 col-lg-4 col-md-6">
-											<div class="single-product">
-												<div class="product-img">
-													<span class="pro-label new-label">new</span>
-													<span class="pro-price-2">$ 56.20</span>
-													<a  data-bs-toggle="modal"  data-bs-target="#productModal" href="#productModal"><br><br><img src="imagenes_ecommerce/productos/vela3.png" alt="" /></a>
-												</div>
-												<div class="product-info clearfix text-center">
-													<div class="fix">
-														<h4 class="post-title"><a href="#">dummy Product name</a></h4>
-													</div>
-													<div class="fix">
-														<span class="pro-rating">
-															<a href="#"><i class="zmdi zmdi-star"></i></a>
-															<a href="#"><i class="zmdi zmdi-star"></i></a>
-															<a href="#"><i class="zmdi zmdi-star"></i></a>
-															<a href="#"><i class="zmdi zmdi-star-half"></i></a>
-															<a href="#"><i class="zmdi zmdi-star-half"></i></a>
-														</span>
-													</div>
-													<div class="product-action clearfix">
-														<button type="button" class="btn btn-primary"><ion-icon name="build" onclick="mostrarModalModificar()"></ion-icon></button>
-														<button type="button" class="btn btn-danger"><ion-icon name="trash" onclick="mostrarModalEliminar()"></ion-icon></button>
-													</div>
-												</div>
-											</div>
-										</div>
-										<!-- Single-product end -->
-										<!-- Single-product start -->
-										<div class="col-xl-3 col-lg-4 col-md-6">
-											<div class="single-product">
-												<div class="product-img">
-													<span class="pro-price-2">$ 56.20</span>
-													<a  data-bs-toggle="modal"  data-bs-target="#productModal" href="#productModal"><br><br><img src="imagenes_ecommerce/productos/vela3.png" alt="" /></a>
-												</div>
-												<div class="product-info clearfix text-center">
-													<div class="fix">
-														<h4 class="post-title"><a href="#">dummy Product name</a></h4>
-													</div>
-													<div class="fix">
-														<span class="pro-rating">
-															<a href="#"><i class="zmdi zmdi-star"></i></a>
-															<a href="#"><i class="zmdi zmdi-star"></i></a>
-															<a href="#"><i class="zmdi zmdi-star"></i></a>
-															<a href="#"><i class="zmdi zmdi-star-half"></i></a>
-															<a href="#"><i class="zmdi zmdi-star-half"></i></a>
-														</span>
-													</div>
-													<div class="product-action clearfix">
-														<button type="button" class="btn btn-primary"><ion-icon name="build" onclick="mostrarModalModificar()"></ion-icon></button>
-														<button type="button" class="btn btn-danger"><ion-icon name="trash" onclick="mostrarModalEliminar()"></ion-icon></button>
-													</div>
-												</div>
-											</div>
-										</div>
-										<!-- Single-product end -->
-										<!-- Single-product start -->
-										<div class="col-xl-3 col-lg-4 col-md-6">
-											<div class="single-product">
-												<div class="product-img">
-													<span class="pro-price-2">$ 56.20</span>
-													<a  data-bs-toggle="modal"  data-bs-target="#productModal" href="#productModal"><br><br><img src="imagenes_ecommerce/productos/vela3.png" alt="" /></a>
-												</div>
-												<div class="product-info clearfix text-center">
-													<div class="fix">
-														<h4 class="post-title"><a href="#">dummy Product name</a></h4>
-													</div>
-													<div class="fix">
-														<span class="pro-rating">
-															<a href="#"><i class="zmdi zmdi-star"></i></a>
-															<a href="#"><i class="zmdi zmdi-star"></i></a>
-															<a href="#"><i class="zmdi zmdi-star"></i></a>
-															<a href="#"><i class="zmdi zmdi-star-half"></i></a>
-															<a href="#"><i class="zmdi zmdi-star-half"></i></a>
-														</span>
-													</div>
-													<div class="product-action clearfix">
-														<button type="button" class="btn btn-primary"><ion-icon name="build" onclick="mostrarModalModificar()"></ion-icon></button>
-														<button type="button" class="btn btn-danger"><ion-icon name="trash" onclick="mostrarModalEliminar()"></ion-icon></button>
-													</div>
-												</div>
-											</div>
-										</div>
-										<!-- Single-product end -->
-										<!-- Single-product start -->
-										<div class="col-xl-3 col-lg-4 col-md-6">
-											<div class="single-product">
-												<div class="product-img">
-													<span class="pro-price-2">$ 56.20</span>
-													<a  data-bs-toggle="modal"  data-bs-target="#productModal" href="#productModal"><br><br><img src="imagenes_ecommerce/productos/vela3.png" alt="" /></a>
-												</div>
-												<div class="product-info clearfix text-center">
-													<div class="fix">
-														<h4 class="post-title"><a href="#">dummy Product name</a></h4>
-													</div>
-													<div class="fix">
-														<span class="pro-rating">
-															<a href="#"><i class="zmdi zmdi-star"></i></a>
-															<a href="#"><i class="zmdi zmdi-star"></i></a>
-															<a href="#"><i class="zmdi zmdi-star"></i></a>
-															<a href="#"><i class="zmdi zmdi-star-half"></i></a>
-															<a href="#"><i class="zmdi zmdi-star-half"></i></a>
-														</span>
-													</div>
-													<div class="product-action clearfix">
-														<button type="button" class="btn btn-primary"><ion-icon name="build" onclick="mostrarModalModificar()"></ion-icon></button>
-														<button type="button" class="btn btn-danger"><ion-icon name="trash" onclick="mostrarModalEliminar()"></ion-icon></button>
-													</div>
-												</div>
-											</div>
-										</div>
-										
-																	
-									</div>					
+									<div id="divProductosDescontinuados"></div>
 								</div>
+									
 							</div>
 						</div>			
 					</div>
@@ -1198,7 +364,6 @@
 		</div>
 		<!-- WRAPPER END -->
 
-
 		<!-- all js here -->
 		<!-- jquery latest version -->
 		<script src="js/vendor/jquery-3.6.0.min.js"></script>
@@ -1232,27 +397,61 @@
 		<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
 		<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 		<script>
-			function mostrarModalModificar()
+			function mostrarModalAgregar()
 			{
+				$('#myModalInsertarProducto').modal('show');
+				//alert("Agregar...");
+			}
+
+
+			function mostrarModalModificar(ID)
+			{
+				var campo = "#btnEditarProducto" + ID;
+				var descripcion = $(campo).attr( "btnProductoDescripcionEditar" );
+				var titulo = $(campo).attr( "btnProductoTituloEditar" );
+				var precio = $(campo).attr( "btnProductoPrecio" );
+				var imagen = $(campo).attr( "btnProductoImagen" );
+
+				console.log("ID: " + ID + " - " + campo + " - " + descripcion + " - " + titulo);
+
+				$("#exampleModalLabel").text(ID);
+				$("#labelIDEditar").val(ID);
+				$("textarea#inputEditarDescripcion").val(descripcion);
+				$("#inputEditarTitulo").attr( "value", titulo );
+				$("#inputEditarPrecio").attr( "value", precio );
+				$("#imgEditar").attr( "src", imagen );
 				$('#myModalInsertarTipoPlanta').modal('show');
 			}
 
-			function mostrarModalEliminar()
+			function mostrarModalEliminar(ID)
 			{
+				var campo = "#btnEliminarProducto" + ID;
+				var descripcion = $(campo).attr( "btnProductoDescripcion" );
+				var titulo = $(campo).attr( "btnProductoTitulo" );
+
+				console.log("ID: " + ID + " - " + campo + " - " + descripcion);
+
+				$("#inputIdDelete").attr( "value", ID );
+				$("#inputProductoDelete").attr( "value", titulo );
+				$("#inputDescripcionDelete").attr( "value", descripcion );
+				$("textarea#inputDescripcionDelete").val(descripcion);
+				$("#btnEliminar").attr( "valueID", ID );
 				$('#myModalEliminar').modal('show');
 			}
 		  </script>
+		  <!-- index js -->
+		  <script src="js/index.js"></script>
+		  <script type="text/javascript" src="js/jquery-confirm.js"></script>
 	</body>
 </html>
 
 
-
-<!-- Modal MODIIFICAR-->
-<div class="modal fade" id="myModalInsertarTipoPlanta" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<!-- Modal AGREGAR-->
+<div class="modal fade" id="myModalInsertarProducto" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 	<div class="modal-dialog" role="document" style="margin-top: 100px;">
 	  	<div class="modal-content">
 			<div class="modal-header">
-		  		<h4 class="modal-title" id="exampleModalLabel">Modificar información de la vela.</h4>
+		  		<h4 class="modal-title" >Agregar información de la vela <label id="exampleModalLabel"> ID</label></h4>
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 					<span aria-hidden="true">&times;</span>
 				</button>
@@ -1260,14 +459,25 @@
 			<div class="modal-body">
 				<form>
 					<div class="form-group">
+						<label for="exampleInputEmail1">Titulo:</label>
+						<input type="text" class="form-control" id="inputAgregarTitulo" aria-describedby="emailHelp" placeholder="Titulo de la vela">
+						<small id="emailHelp" class="form-text text-muted">Aquí puede ingresar el titulo de la vela</small><br><br>
+					</div>
+					<div class="form-group">
 						<label for="exampleInputEmail1">Descripción:</label>
-						<input type="text" class="form-control" id="inputTipoPlantaInsert" aria-describedby="emailHelp" placeholder="Nombre de la vela">
-						<small id="emailHelp" class="form-text text-muted">Aquí puede ingresar el nombre de la vela</small><br><br>
+						<textarea type="text" class="form-control" id="inputAgregarDescripcion" aria-describedby="emailHelp" placeholder="Descripción de la vela"></textarea>
+						<small id="emailHelp" class="form-text text-muted">Aquí puede ingresar la descripcion de la vela</small><br><br>
+					</div>
+					<div class="form-group">
+						<label for="exampleInputEmail1">Precio:</label>
+						<input type="text" class="form-control" id="inputAgregarPrecio" aria-describedby="emailHelp" placeholder="Precio de la vela">
+						<small id="emailHelp" class="form-text text-muted">Aquí puede ingresar el precio de la vela</small><br><br>
 					</div>
 					<div class="form-group">
 						<div class="input-group mb-3">
 							<div class="custom-file">
 								<label for="exampleInputEmail1">Imagen:</label><br>
+								<img id="imgEditar" src="" alt='' />
 								<input type="file" class="custom-file-input" id="inputGroupFile01">
 								<label class="custom-file-label" for="inputGroupFile01">Seleccione archivo</label>
 								<small id="emailHelp" class="form-text text-muted">Aquí puede seeleccionar la imagen que representa la vela</small>
@@ -1278,7 +488,56 @@
 			</div>
 		<div class="modal-footer">
 		  <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-		  <button type="button" class="btn btn-primary" onclick="registroInsertTipoPlanta()">Actualizar</button>
+		  <button type="button" class="btn btn-primary" onclick="agregarProducto()">Agregar</button>
+		</div>
+	  </div>
+	</div>
+  </div>
+
+
+<!-- Modal MODIIFICAR-->
+<div class="modal fade" id="myModalInsertarTipoPlanta" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document" style="margin-top: 100px;">
+	  	<div class="modal-content">
+			<div class="modal-header">
+		  		<h4 class="modal-title" >Modificar información de la vela <label id="exampleModalLabel"> ID</label></h4>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<form>
+					<div class="form-group">
+						<label for="exampleInputEmail1">Titulo:</label>
+						<input type="text" class="form-control" id="inputEditarTitulo" aria-describedby="emailHelp" placeholder="Titulo de la vela">
+						<small id="emailHelp" class="form-text text-muted">Aquí puede ingresar el titulo de la vela</small><br><br>
+					</div>
+					<div class="form-group">
+						<label for="exampleInputEmail1">Descripción:</label>
+						<textarea type="text" class="form-control" id="inputEditarDescripcion" aria-describedby="emailHelp" placeholder="Descripción de la vela"></textarea>
+						<small id="emailHelp" class="form-text text-muted">Aquí puede ingresar la descripcion de la vela</small><br><br>
+					</div>
+					<div class="form-group">
+						<label for="exampleInputEmail1">Precio:</label>
+						<input type="text" class="form-control" id="inputEditarPrecio" aria-describedby="emailHelp" placeholder="Precio de la vela">
+						<small id="emailHelp" class="form-text text-muted">Aquí puede ingresar el precio de la vela</small><br><br>
+					</div>
+					<div class="form-group">
+						<div class="input-group mb-3">
+							<div class="custom-file">
+								<label for="exampleInputEmail1">Imagen:</label><br>
+								<img id="imgEditar" src="" alt='' />
+								<input type="file" class="custom-file-input" id="inputGroupFile01">
+								<label class="custom-file-label" for="inputGroupFile01">Seleccione archivo</label>
+								<small id="emailHelp" class="form-text text-muted">Aquí puede seeleccionar la imagen que representa la vela</small>
+							</div>
+						</div>
+					</div>
+				</form>
+			</div>
+		<div class="modal-footer">
+		  <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+		  <button type="button" class="btn btn-primary" onclick="editarInfoProducto()">Actualizar</button>
 		</div>
 	  </div>
 	</div>
@@ -1300,16 +559,19 @@
 		  <form>
 			<div class="form-group">
 			  <label for="exampleInputEmail1">¿Esta seguro que desea desactivar el producto?</label>
-			  <br>ID producto: <input type="text" class="form-control" id="inputIDDelete" aria-describedby="emailHelp" placeholder="ID" disabled>
+			  <br>ID producto: <input type="text" class="form-control" id="inputIdDelete" aria-describedby="emailHelp" placeholder="ID" disabled>
 			</div>
 			<div class="form-group">
-			  Descripcion: <input type="text" class="form-control" id="inputAgricultorDelete" aria-describedby="emailHelp" placeholder="Descripcion producto..." disabled>
+			  Titulo: <input type="text" class="form-control" id="inputProductoDelete" aria-describedby="emailHelp" placeholder="Tirulo producto..." disabled>
 			</div>
+			<div class="form-group">
+				Descripcion: <textarea type="text" class="form-control" id="inputDescripcionDelete" aria-describedby="emailHelp" placeholder="Descripcion producto..." disabled></textarea>
+			  </div>
 		  </form>
 		</div>
 		<div class="modal-footer">
 		  <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-		  <button type="button" class="btn btn-danger" onclick="RegistroDelete()">Eliminar</button>
+		  <button type="button" class="btn btn-danger" id="btnEliminar" valueID="" onclick="RegistroDelete2()">Eliminar</button>
 		</div>
 	  </div>
 	</div>
